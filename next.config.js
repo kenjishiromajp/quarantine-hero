@@ -1,4 +1,5 @@
 const withLess = require('@zeit/next-less');
+const withPWA = require('next-pwa');
 const resolve = require('resolve');
 
 // styled jsx will fail without it
@@ -6,7 +7,10 @@ if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
 }
 
-module.exports = withLess({
+module.exports = withPWA(withLess({
+  pwa: {
+    dest: 'public'
+  },
   lessLoaderOptions: {
     javascriptEnabled: true,
     // theme antd here
@@ -56,4 +60,4 @@ module.exports = withLess({
 
     return config
   },
-})
+}));
