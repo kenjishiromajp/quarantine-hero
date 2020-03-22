@@ -25,16 +25,14 @@ const HelpRequests = ({ countries, requests }) => {
   const [citySelected, setCitySelected] = useState(null);
   const [suburbSelected, setSuburbSelected] = useState(null);
 
-  const [currentPagination, setCurrentPagination] = useState(null);
+  const [currentPagination, setCurrentPagination] = useState(1);
 
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [suburbs, setSuburbs] = useState([]);
-  //const [requests, setRequests] = useState(initialRequests);
 
-  async function OnChangePagination(value) {
-    setCurrentPagination(value);
-    getRequests();
+  async function OnChangePagination(page, size) {
+    setCurrentPagination(page);
   }
 
   async function onCountryChange(value) {
@@ -54,7 +52,7 @@ const HelpRequests = ({ countries, requests }) => {
   
   useEffect(() => {
     getRequests();
-  }, [countrySelected, stateSelected, citySelected, suburbSelected]);
+  }, [countrySelected, stateSelected, citySelected, suburbSelected, currentPagination]);
 
   async function onStateChange(value) {
     //const response = await fetch("https://restcountries.eu/rest/v2/all")
@@ -172,9 +170,9 @@ const HelpRequests = ({ countries, requests }) => {
           <section className="gray-1-background">
             <div className="max-width-800">
               {requests.data.map(requestItem => (
-                <Request id={requestItem.id} name={requestItem.user.name} createdAt={requestItem.createdAt} description={requestItem.description} />
+                <Request id={requestItem.id} name={requestItem.user.name} createdAt={requestItem.createdAt} description={requestItem.description} facebookProfileURL={requestItem.user.facebookProfileURL} />
               ))}
-              <Pagination  value={currentPagination} total={50} onChange={() => OnChangePagination({currentPagination})} />
+              <Pagination defaultCurrent={1}  value={currentPagination} total={50} onChange={OnChangePagination} />
             </div>
           </section>
         </main>
@@ -196,7 +194,7 @@ HelpRequests.getInitialProps = async ctx => {
           "id": 1,
           "user": {
             "name": "Rodrigo",
-            "facebookProfileURL": "afasdfasfas",
+            "facebookProfileURL": "https://www.facebook.com/Rodrigooaraujo",
             "photoUrl": "",
             "location": {
               "suburb": "Spring Hill",
@@ -211,10 +209,10 @@ HelpRequests.getInitialProps = async ctx => {
           "updatedAt": ""
         },
         {
-          "id": 1,
+          "id": 2,
           "user": {
             "name": "Giovanni",
-            "facebookProfileURL": "afasdfasfas",
+            "facebookProfileURL": "https://www.facebook.com/Rodrigooaraujo",
             "photoUrl": "",
             "location": {
               "suburb": "West End",
@@ -229,10 +227,10 @@ HelpRequests.getInitialProps = async ctx => {
           "updatedAt": ""
         },
         {
-          "id": 1,
+          "id": 3,
           "user": {
             "name": "Giovanni",
-            "facebookProfileURL": "afasdfasfas",
+            "facebookProfileURL": "https://www.facebook.com/Rodrigooaraujo",
             "photoUrl": "",
             "location": {
               "suburb": "West End",
@@ -247,10 +245,10 @@ HelpRequests.getInitialProps = async ctx => {
           "updatedAt": ""
         },
         {
-          "id": 1,
+          "id": 4,
           "user": {
             "name": "Giovanni",
-            "facebookProfileURL": "afasdfasfas",
+            "facebookProfileURL": "https://www.facebook.com/Rodrigooaraujo",
             "photoUrl": "",
             "location": {
               "suburb": "West End",
@@ -265,10 +263,10 @@ HelpRequests.getInitialProps = async ctx => {
           "updatedAt": ""
         },
         {
-          "id": 1,
+          "id": 5,
           "user": {
             "name": "Giovanni",
-            "facebookProfileURL": "afasdfasfas",
+            "facebookProfileURL": "https://www.facebook.com/Rodrigooaraujo",
             "photoUrl": "",
             "location": {
               "suburb": "West End",
@@ -283,10 +281,10 @@ HelpRequests.getInitialProps = async ctx => {
           "updatedAt": ""
         },
         {
-          "id": 1,
+          "id": 6,
           "user": {
             "name": "Giovanni",
-            "facebookProfileURL": "afasdfasfas",
+            "facebookProfileURL": "https://www.facebook.com/Rodrigooaraujo",
             "photoUrl": "",
             "location": {
               "suburb": "West End",

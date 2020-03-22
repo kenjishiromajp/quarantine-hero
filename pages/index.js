@@ -46,7 +46,7 @@ const Home = ({ requests }) => (
       <section className="gray-1-background">
         <Row justify="center" align="stretch" gutter={[16, 16]}>
           {requests.data.map((requestItem) => (
-            <Col span={6} id={requestItem.id} style={{height: "100%"}}>
+            <Col span={6} id={requestItem.id} key={requestItem.id} style={{height: "100%"}}>
               {
                 <Request id={requestItem.id} name={requestItem.user.name} createdAt={requestItem.createdAt} description={requestItem.description}/>
               }
@@ -89,7 +89,7 @@ Home.getInitialProps = async ctx => {
         "updatedAt": ""
       },
       {
-        "id": 1,
+        "id": 2,
         "user": {
           "name": "Giovanni",
           "facebookProfileURL": "afasdfasfas",
@@ -107,7 +107,7 @@ Home.getInitialProps = async ctx => {
         "updatedAt": ""
       },
       {
-        "id": 1,
+        "id": 3,
         "user": {
           "name": "Giovanni",
           "facebookProfileURL": "afasdfasfas",
@@ -125,7 +125,7 @@ Home.getInitialProps = async ctx => {
         "updatedAt": ""
       },
       {
-        "id": 1,
+        "id": 4,
         "user": {
           "name": "Giovanni",
           "facebookProfileURL": "afasdfasfas",
@@ -143,7 +143,7 @@ Home.getInitialProps = async ctx => {
         "updatedAt": ""
       },
       {
-        "id": 1,
+        "id": 5,
         "user": {
           "name": "Giovanni",
           "facebookProfileURL": "afasdfasfas",
@@ -161,7 +161,7 @@ Home.getInitialProps = async ctx => {
         "updatedAt": ""
       },
       {
-        "id": 1,
+        "id": 6,
         "user": {
           "name": "Giovanni",
           "facebookProfileURL": "afasdfasfas",
