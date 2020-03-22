@@ -2,21 +2,32 @@ import React from 'react';
 import { Avatar, Button, Card, Col, Row } from 'antd';
 const { Meta } = Card;
 
-const Request = () => (
-  <Card>
-    <Meta
-      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-      title="Username"
-      description="11/12/2013"
-    />
-    <div>
-      <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos magni, quia! Animi architecto
-          beatae doloribus esse, ex iusto neque obcaecati sed sint vitae?
-          Facere illo inventore labore molestiae sapiente temporibus?
-      </p>
-    </div>
-    <Button shape="round" color="primary" >Help this person</Button>
+async function handleHelp({id}){
+alert(id);
+}
+
+const Request = ({ id, name, createdAt, description }) => (
+
+
+
+  <Card style={{height: "100%"}}>
+    <Row gutter={[5, 5]} id={id}>
+      <Col flex="0">
+        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+      </Col>
+      <Col>
+        <Row><span className="ant-card-meta-title">{name}</span></Row>
+        <Row><span className="ant-card-meta-description">{createdAt}</span></Row>
+      </Col>
+    </Row>
+    <Row>
+      <p>{description}</p>
+    </Row>
+    <Row justify="end" >
+      <Col flex="0">
+        <Button shape="round" color="primary" onClick={() => handleHelp({id})} >Help this person</Button>
+      </Col>
+    </Row>
   </Card>
 );
 

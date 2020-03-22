@@ -44,20 +44,22 @@ const Home = ({ requests }) => (
       </section>
 
       <section className="gray-1-background">
-          <Row justify="center" align="center" gutter={[16,16]}>
-            {requests.map((request) => (
-              <Col span={6}>
-                <Request />
-              </Col>
-              ) )}
-          </Row>
-          <Row justify="center" align="center">
-            <Col flex="0">
-              <Button shape="round" size="large">
-                <Link href="/helpRequests">Browse all the tasks</Link>
-              </Button>
+        <Row justify="center" align="stretch" gutter={[16, 16]}>
+          {requests.data.map((requestItem) => (
+            <Col span={6} id={requestItem.id} style={{height: "100%"}}>
+              {
+                <Request id={requestItem.id} name={requestItem.user.name} createdAt={requestItem.createdAt} description={requestItem.description}/>
+              }
             </Col>
-          </Row>
+          )).slice(0,4)}
+        </Row>
+        <Row justify="center" align="center">
+          <Col flex="0">
+            <Button shape="round" size="large">
+              <Link href="/helpRequests">Browse all the tasks</Link>
+            </Button>
+          </Col>
+        </Row>
       </section>
     </main>
   </div>
@@ -66,7 +68,122 @@ const Home = ({ requests }) => (
 Home.getInitialProps = async ctx => {
   // const res = await fetch('https://api.github.com/repos/zeit/next.js')
   // const json = await res.json();
-  const requests = [1,2,3,4];
+  const requests = {
+    "data": [
+      {
+        "id": 1,
+        "user": {
+          "name": "Rodrigo",
+          "facebookProfileURL": "afasdfasfas",
+          "photoUrl": "",
+          "location": {
+            "suburb": "Spring Hill",
+            "city": "Brisbane",
+            "state": "QLD",
+            "country": "Australia"
+          }
+        },
+        "description": "I need a toilet paper",
+        "status": "PENDING",
+        "createdAt": "22/03/2020",
+        "updatedAt": ""
+      },
+      {
+        "id": 1,
+        "user": {
+          "name": "Giovanni",
+          "facebookProfileURL": "afasdfasfas",
+          "photoUrl": "",
+          "location": {
+            "suburb": "West End",
+            "city": "Brisbane",
+            "state": "QLD",
+            "country": "Australia"
+          }
+        },
+        "description": "I need bread",
+        "status": "PENDING",
+        "createdAt": "22/03/2020",
+        "updatedAt": ""
+      },
+      {
+        "id": 1,
+        "user": {
+          "name": "Giovanni",
+          "facebookProfileURL": "afasdfasfas",
+          "photoUrl": "",
+          "location": {
+            "suburb": "West End",
+            "city": "Brisbane",
+            "state": "QLD",
+            "country": "Australia"
+          }
+        },
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "status": "PENDING",
+        "createdAt": "22/03/2020",
+        "updatedAt": ""
+      },
+      {
+        "id": 1,
+        "user": {
+          "name": "Giovanni",
+          "facebookProfileURL": "afasdfasfas",
+          "photoUrl": "",
+          "location": {
+            "suburb": "West End",
+            "city": "Brisbane",
+            "state": "QLD",
+            "country": "Australia"
+          }
+        },
+        "description": "I need bred",
+        "status": "PENDING",
+        "createdAt": "22/03/2020",
+        "updatedAt": ""
+      },
+      {
+        "id": 1,
+        "user": {
+          "name": "Giovanni",
+          "facebookProfileURL": "afasdfasfas",
+          "photoUrl": "",
+          "location": {
+            "suburb": "West End",
+            "city": "Brisbane",
+            "state": "QLD",
+            "country": "Australia"
+          }
+        },
+        "description": "I need bred",
+        "status": "PENDING",
+        "createdAt": "22/03/2020",
+        "updatedAt": ""
+      },
+      {
+        "id": 1,
+        "user": {
+          "name": "Giovanni",
+          "facebookProfileURL": "afasdfasfas",
+          "photoUrl": "",
+          "location": {
+            "suburb": "West End",
+            "city": "Brisbane",
+            "state": "QLD",
+            "country": "Australia"
+          }
+        },
+        "description": "I need bred",
+        "status": "PENDING",
+        "createdAt": "22/03/2020",
+        "updatedAt": ""
+      }
+    ],
+    "_links": {
+      "currentPage": 1,
+      "total": 1
+    }
+  };
   return {
     requests,
   }
