@@ -26,10 +26,14 @@ const Home = ({ requests }) => (
           </p>
           <Row justify="center" align="center" gutter={[16, 16]} >
             <Col flex="0">
-              <Button size="large" shape="round" >Someone needs a quarantine hero</Button>
+              <Button size="large" shape="round" >
+                <Link href="/newHelpRequest">Someone needs a quarantine hero</Link>
+              </Button>
             </Col>
             <Col flex="0">
-              <Button size="large" shape="round" type="primary">I want to be a quarantine hero</Button>
+              <Button size="large" shape="round" type="primary">
+                <Link href="/login">I want to be a quarantine hero</Link>
+              </Button>
             </Col>
           </Row>
         </div>
